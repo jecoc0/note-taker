@@ -1,19 +1,26 @@
 {
   "notes": [
     {
-      "id": "0",
       "title": "Groceries needed",
-      "note": "eggs, bread, milk, cheese, canned sardines"
+      "text": "eggs, bread, milk, cheese, canned sardines"
     },
     {
-      "id": "1",
       "title": "thoughts about class",
-      "note": "I still don't really understand routes"
+      "text": "I still don't really understand routes"
     },
     {
-      "id": "2",
       "title": "Reminder",
-      "note": "cancel gym membership"
+      "text": "cancel gym membership"
+    },
+    {
+      "title": "Read",
+      "text": "Read 50 pages in The Warmth of Other Suns",
+      "id": "3"
+    },
+    {
+      "title": "Dinner",
+      "text": "Choose what we are ordering for dinner tonight",
+      "id": "4"
     }
   ]
 }
