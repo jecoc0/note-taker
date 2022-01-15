@@ -1,0 +1,19 @@
+{
+  "notes": [
+    {
+      "id": "0",
+      "title": "Groceries needed",
+      "note": "eggs, bread, milk, cheese, canned sardines"
+    },
+    {
+      "id": "1",
+      "title": "thoughts about class",
+      "note": "I still don't really understand routes"
+    },
+    {
+      "id": "2",
+      "title": "Reminder",
+      "note": "cancel gym membership"
+    }
+  ]
+}
