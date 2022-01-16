@@ -1,11 +1,14 @@
 // require Express.js
 const express = require('express');
 const fs = require('fs');
-const path = require('path')
+const path = require('path');
+const morgan = require('morgan');
 
 // instantiate the server
 const app = express();
+app.use(morgan('tiny'));
 
+app.use(express.static('public'));
 // middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -72,6 +75,18 @@ app.post('/api/notes', (req, res) => {
 
   res.json(note);
   }
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './Develop/public/index.html'));
+});
+
+app.get('/notes', (req, res) => {
+  res.sendFile(path.join(__dirname, './Develop/public/notes.html'));
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './Develop/public/index.html'));
 });
 
 // tell the server to listen for requests

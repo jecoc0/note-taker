@@ -21,6 +21,21 @@
       "title": "Dinner",
       "text": "Choose what we are ordering for dinner tonight",
       "id": "4"
+    },
+    {
+      "title": "nap time over",
+      "text": "Wake up miles",
+      "id": "5"
+    },
+    {
+      "title": "take a nap",
+      "text": "Take a nap on the couch",
+      "id": "6"
+    },
+    {
+      "title": "take an ibuprofen",
+      "text": "get rid of this headache",
+      "id": "7"
     }
   ]
 }
