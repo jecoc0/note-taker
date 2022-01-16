@@ -3,15 +3,16 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const morgan = require('morgan');
+const uniqid = require('uniqid');
 
 // instantiate the server
 const app = express();
-app.use(morgan('tiny'));
 
-app.use(express.static('public'));
 // middleware
+app.use(morgan('tiny'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static('Develop/public'));
 
 
 const PORT = process.env.PORT || 3001;
@@ -30,6 +31,17 @@ function createNewNote(body, notesArray) {
   return note;
 };
 
+function deleteNote(body, notes) {
+  const foundNote = body;
+  const filteredArray = notes.filter( note => note.id !== foundNote.id);
+  console.log(filteredArray)
+  fs.writeFileSync(
+    path.join(__dirname, './Develop/db/notes.json'),
+    JSON.stringify({ notes: filteredArray }, null, 2)
+  )
+  return filteredArray;
+}
+
 // Validate Notes
 function validateNote(note) {
   if (!note.title || typeof note.title !== 'string') {
@@ -39,6 +51,12 @@ function validateNote(note) {
     return false;
   }
   return true;
+}
+
+// Find by ID
+function findById(id, notesArray) {
+  const result = notesArray.filter(note => note.id === id)[0];
+  return result;
 }
 
 
@@ -60,10 +78,19 @@ app.get('/api/notes',  (req, res) => {
   res.json(notes);
 });
 
+// app.get('/notes', (req, res) => {
+//   let results = notes;
+//   if (req.query) {
+//     results 
+//   }
+// })
+
 app.post('/api/notes', (req, res) => {
 
   // set id based on what the next index of the array will be
-  req.body.id = notes.length.toString();
+  req.body.id = uniqid.process()
+  console.log(req.body.id)
+  // notes.length.toString();
 
   // if any data in req.body is incorrect, send 400 error back
   if (!validateNote(req.body)) {
@@ -77,6 +104,17 @@ app.post('/api/notes', (req, res) => {
   }
 });
 
+app.delete('/api/notes/:id', (req, res) => {
+  const result = findById(req.params.id, notes);
+  console.log(result)
+  if (result) {
+    const returnedNotesArray = deleteNote(result, notes);
+    res.json(returnedNotesArray)
+  } else {
+    res.send(404);
+  }
+});
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './Develop/public/index.html'));
 });
@@ -84,6 +122,7 @@ app.get('/', (req, res) => {
 app.get('/notes', (req, res) => {
   res.sendFile(path.join(__dirname, './Develop/public/notes.html'));
 });
+
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './Develop/public/index.html'));

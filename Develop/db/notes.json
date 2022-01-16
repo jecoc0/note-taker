@@ -1,41 +1,14 @@
 {
   "notes": [
     {
-      "title": "Groceries needed",
-      "text": "eggs, bread, milk, cheese, canned sardines"
+      "title": "Wine",
+      "text": "Pour a glass of wine and drink it",
+      "id": "op6kygpyncj"
     },
     {
-      "title": "thoughts about class",
-      "text": "I still don't really understand routes"
-    },
-    {
-      "title": "Reminder",
-      "text": "cancel gym membership"
-    },
-    {
-      "title": "Read",
-      "text": "Read 50 pages in The Warmth of Other Suns",
-      "id": "3"
-    },
-    {
-      "title": "Dinner",
-      "text": "Choose what we are ordering for dinner tonight",
-      "id": "4"
-    },
-    {
-      "title": "nap time over",
-      "text": "Wake up miles",
-      "id": "5"
-    },
-    {
-      "title": "take a nap",
-      "text": "Take a nap on the couch",
-      "id": "6"
-    },
-    {
-      "title": "take an ibuprofen",
-      "text": "get rid of this headache",
-      "id": "7"
+      "title": "CupHead",
+      "text": "Play CupHead with Tyler, beat a level",
+      "id": "op6kygpzfsh"
     }
   ]
 }
